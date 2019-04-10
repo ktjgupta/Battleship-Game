@@ -22,5 +22,6 @@ that will either say Hit or Miss after each time the player calls a square.
 I will be using the standard ofxGui libary as well as implementing a library called ofxImGui to help with the display aspect of
 this project and to make it a much more clean design.
 
-###Resources
+### Resources
 * http://github.com - automatic!
+[GitHub](http://github.com)
