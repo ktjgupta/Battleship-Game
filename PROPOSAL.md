@@ -15,7 +15,8 @@ player would have the opportunity to play against an AI. One of these AI will be
 while the other one will be a smarter implementation and play the game how I would normally play it. In terms of user
 interaction, I plan to implement a very simple gui that will display the players board like a grid and indicate which spaces 
 you have your ships. There will also be another grid that represents the opponents board, so the player can see which squares
-they have already chosen and mark if the player called a square that hit the opponent. Additionally I will have a popup text
+they have already chosen and mark if the player called a square that hit the opponent. At the beginning of the game, there 
+will also be a textbox so the user can indicate how they want to orient their ships. Additionally I will have a popup text
 that will either say Hit or Miss after each time the player calls a square.
 
 ## Libraries
@@ -23,5 +24,6 @@ I will be using the standard ofxGui libary as well as implementing a library cal
 this project and to make it a much more clean design.
 
 ### Resources
-* http://github.com - automatic!
-[GitHub](http://github.com)
+* [ofxGui](https://openframeworks.cc/documentation/ofxGui/)
+* [ofxImGui](https://github.com/jvcleave/ofxImGui)
+* [Battleship Help](https://code-projects.org/battleship-game-in-c-with-source-code-2/)
