@@ -21,9 +21,11 @@ that will either say Hit or Miss after each time the player calls a square.
 
 ## Libraries
 I will be using the standard ofxGui libary as well as implementing a library called ofxImGui to help with the display aspect of
-this project and to make it a much more clean design.
+this project and to make it a much more clean design.I will also be using the sound libarary for background music as my library
+add on.
 
 ### Resources
 * [ofxGui](https://openframeworks.cc/documentation/ofxGui/)
 * [ofxImGui](https://github.com/jvcleave/ofxImGui)
+* [ofSoundPlayer](https://openframeworks.cc/documentation/sound/ofSoundPlayer/)
 * [Battleship Help](https://code-projects.org/battleship-game-in-c-with-source-code-2/)
