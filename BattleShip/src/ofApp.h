@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxGui.h"
+#include "ofxMSAInteractiveObject.h"
 
 class ofApp : public ofBaseApp{
 
@@ -26,5 +27,8 @@ class ofApp : public ofBaseApp{
 		
 		ofxPanel gui;
 		ofxButton button;
+		ofRectangle myRect;
+		bool bIsClicked = false;
+		ofxMSAInteractiveObject obj;
 
 };
