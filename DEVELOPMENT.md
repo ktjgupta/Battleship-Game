@@ -18,7 +18,7 @@
 
 * BackEnd Development
 	* Created methods that randomizes ships on standard board to mimic enemy board
-	*Figured out I had to set the random seed otherwise I get same results every time
+	* Figured out I had to set the random seed otherwise I get same results every time
 
 * Combining Aspects
 	* Made the app access the enemy board
