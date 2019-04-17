@@ -4,7 +4,7 @@
 * Tested and played around with ofxGui examples
 * Utilized ImGui and ran the first couple of examples
 
-##Week 2 Code Review
+## Week 2 Code Review
 
 * Started openframeworks development
 	* Spent a lot of time trying to figure out how to make good buttons
