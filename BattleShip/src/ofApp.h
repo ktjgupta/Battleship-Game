@@ -3,7 +3,9 @@
 #include "ofMain.h"
 #include "ofxGui.h"
 #include "ofxMSAInteractiveObject.h"
+#include "gamesquare.h"
 
+const int kWidth = 10;
 class ofApp : public ofBaseApp{
 
 	public:
@@ -23,12 +25,7 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-		void ButtonPressed();
-		
-		ofxPanel gui;
-		ofxButton button;
-		ofRectangle myRect;
-		bool bIsClicked = false;
-		ofxMSAInteractiveObject obj;
+		vector<vector<gamesquare> > board;
+		vector<vector<char>> enemy_board;
 
 };

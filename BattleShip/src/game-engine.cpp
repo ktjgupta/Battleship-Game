@@ -1,9 +1,8 @@
-//#include "ofMain.h"
 #include <stdlib.h> 
 #include <map>
 #include <iostream>
 #include <vector>
-#include "enemy.h"
+#include "game-engine.h"
 
 using std::vector;
 using std::map;
@@ -13,7 +12,7 @@ const char kBlankChar = '_';
 vector<vector<char> > enemy_board(kWidth, vector<char>(kWidth, kBlankChar));
 map<char, int> ships = { {'a', 5}, {'b', 4}, {'c', 3}, {'s', 3}, {'d', 2} };
 
-void GenerateRandomBoard() {
+vector <vector<char>> GenerateRandomBoard() {
 
 
 	for (std::map<char, int>::iterator it = ships.begin(); it != ships.end(); ++it) {
@@ -22,16 +21,10 @@ void GenerateRandomBoard() {
 			enemy_board = PlayHorizontally(it->second, enemy_board);
 		}
 		else {
-		enemy_board = PlayVertically(it->second, enemy_board);
+			enemy_board = PlayVertically(it->second, enemy_board);
 		}
 	}
-	for (int i = 0; i < kWidth; i++) {
-		for (int j = 0; j < kWidth; j++) {
-			std::cout << enemy_board[i][j] << " ";
-		}
-		std::cout << std::endl;
-	}
-
+	return enemy_board;
 
 }
 
@@ -56,9 +49,8 @@ vector <vector<char>> PlayHorizontally(int size, vector <vector<char>> board) {
 			break;
 		}
 	}
-	
+
 	int rand_position = rand() % valid_positions.size();
-	std::cout << valid_positions.size() << std::endl;
 	int col = valid_positions[rand_position];
 	for (int i = 0; i < size; i++) {
 		board[row][col] = 'S';
@@ -88,13 +80,22 @@ vector <vector<char>> PlayVertically(int size, vector <vector<char>> board) {
 			break;
 		}
 	}
-	
+
 	int rand_position = rand() % valid_positions.size();
-	std::cout << valid_positions.size() << std::endl;
 	int row = valid_positions[rand_position];
 	for (int i = 0; i < size; i++) {
 		board[row][col] = 'S';
 		row++;
 	}
 	return board;
+}
+
+vector <vector<char>> getEnemyBoard() {
+	return enemy_board;
+}
+
+
+void RunGame() {
+	vector <vector<char>> enemy_board = GenerateRandomBoard();
+
 }

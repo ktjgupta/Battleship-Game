@@ -3,19 +3,19 @@
 #include <stdlib.h> 
 #include <map>
 #include <iostream>
-#include "enemy.h"
+#include "game-engine.h"
 
 
 //========================================================================
-
+vector <vector<char>> enemyboard;
 
 int main( ){
 
 
-	std::cout << "hello" << std::endl;
 	srand(time(NULL));
 	
-	GenerateRandomBoard();
+	enemyboard = GenerateRandomBoard();
+
 	ofSetupOpenGL(1024,768,OF_WINDOW);			// <-------- setup the GL context
 
 	// this kicks off the running of my app

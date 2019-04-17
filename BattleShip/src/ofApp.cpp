@@ -1,43 +1,58 @@
 #include "ofApp.h"
+#include "game-engine.h"
 
 //--------------------------------------------------------------
-void ofApp::setup(){
-	gui.setup("panel");
-	button.addListener(this, &ofApp::ButtonPressed);
-	gui.add(button.setup("button"));
-	myRect.setWidth(200);
-	myRect.setHeight(200);
-	//obj.setHeight(300);
-	//obj.setWidth(200);
+const int kTileWidth = 50;
+const int kTileSep = 5;
 
-	obj.set(300, 50, 100, 200);
+
+void ofApp::setup(){
+	enemy_board = getEnemyBoard();
+	gamesquare myRect;
+	vector<vector<gamesquare> > board2(kWidth, vector<gamesquare>(kWidth,  myRect));
+	board = board2;
+	int y = 0;
+	for (int i = 0; i < kWidth; i++) {
+		int x = 0;
+		for (int j = 0; j < kWidth; j++) {
+			gamesquare square;
+			square.rect.set(x, y, kTileWidth, kTileWidth);
+			square.color = ofColor::blue;
+			square.name = to_string(i) + to_string(j);
+			board[i][j] = square;
+			x += kTileWidth + kTileSep;
+		}
+		y += kTileWidth + kTileSep;
+	}
+
+	for (int i = 0; i < kWidth; i++) {
+		for (int j = 0; j < kWidth; j++) {
+			std::cout << enemy_board[i][j] << " ";
+		}
+		std::cout << std::endl;
+	}
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
+	for (int i = 0; i < kWidth; i++) {
+		for (int j = 0; j < kWidth; j++) {
+			enemy_board[i][j] = board[i][j].ChangeColor(enemy_board[i][j]);
+		}
+	}
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
 	ofBackgroundGradient(ofColor::white, ofColor::gray);
-	gui.draw();
-	/*
-	ofSetColor(0,0,0);
-	ofDrawRectangle(myRect);
-	if (ofGetMousePressed() && myRect.inside(mouseX, mouseY)) {
-		cout << "YAY";
-	}
-	*/
-	if (bIsClicked) {
-		ofSetColor(ofColor::yellow);// draw a yellow rectangle when clicked
-	}
-	else {
-		auto x = ofColor::gray;
-		ofSetColor(x);
-	}
 
-	ofDrawRectangle(myRect);
+	
+	for (int i = 0; i < kWidth; i++) {
+		for (int j = 0; j < kWidth; j++) {
+			ofSetColor(board[i][j].color);
+			ofDrawRectangle(board[i][j].rect);
+		}
+	}
 
 }
 
@@ -63,7 +78,6 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-	bIsClicked = myRect.inside(x, y);
 }
 
 //--------------------------------------------------------------
@@ -94,8 +108,4 @@ void ofApp::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
-}
-
-void ofApp::ButtonPressed() {
-	//button.play();
 }
