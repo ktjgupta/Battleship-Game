@@ -11,16 +11,13 @@ public:
 	ofColor color;
 
 	char ChangeColor(char val) {
-		if (ofGetMousePressed() && rect.inside(ofGetMouseX(), ofGetMouseY())) {
-			if (val == 'S') {
-				color = ofColor::red;
-				return 'H';
-			}
-			if (val == '_') {
-				color = ofColor::gray;
-				return 'M';
-			}
-			
+		if (val == 'S') {
+			color = ofColor::red;
+			return 'H';
+		}
+		if (val == '_') {
+			color = ofColor::gray;
+			return 'M';
 		}
 		return val;
 	}

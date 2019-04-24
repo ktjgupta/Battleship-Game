@@ -118,3 +118,14 @@ std::tuple<int, int> CalculateEnemyMove() {
 	return { x,y };
 	
 }
+
+bool CheckIfWon(vector <vector<char>> board) {
+	for (int i = 0; i < kWidth; i++) {
+		for (int j = 0; j < kWidth; j++) {
+			if (board[i][j] == 'S') {
+				return false;
+			}
+		}
+	}
+	return true;
+}

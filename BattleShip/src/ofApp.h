@@ -34,5 +34,10 @@ class ofApp : public ofBaseApp{
 		ofImage title_img;
 		ofTrueTypeFont  player_label;
 		ofTrueTypeFont  enemy_label;
+		ofTrueTypeFont  game_label;
+
+		bool player_won;
+		bool enemy_won;
+		
 
 };

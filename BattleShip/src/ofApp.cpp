@@ -14,9 +14,12 @@ void ofApp::setup(){
 	title_img.load("images/battleship_logo.png");
 	player_label.load("verdana.ttf", 30);
 	enemy_label.load("verdana.ttf", 30);
+	game_label.load("verdana.ttf", 100);
 	
 	enemy_board = getNewBoard();
 	player_board = getNewBoard();
+	player_won = false;
+    enemy_won = false;
 	gamesquare myRect;
 	vector<vector<gamesquare> > board(kWidth, vector<gamesquare>(kWidth,  myRect));
 	p_board = board;
@@ -60,40 +63,32 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	if (player_turn) {
-		for (int i = 0; i < kWidth; i++) {
-			for (int j = 0; j < kWidth; j++) {
-				char init_val = enemy_board[i][j];
-				char new_val = e_board[i][j].ChangeColor(enemy_board[i][j]);
-				enemy_board[i][j] = new_val;
-				if (new_val != init_val) {
-					player_turn = false;
+	if (!player_won && !enemy_won) {
+		if (player_turn) {
+			for (int i = 0; i < kWidth; i++) {
+				for (int j = 0; j < kWidth; j++) {
+					if (ofGetMousePressed() && e_board[i][j].rect.inside(ofGetMouseX(), ofGetMouseY())) {
+						char init_val = enemy_board[i][j];
+						char new_val = e_board[i][j].ChangeColor(init_val);
+						enemy_board[i][j] = new_val;
+						if (new_val != init_val) {
+							player_turn = false;
+						}
+					}
 				}
 			}
 		}
-	}
-	else {
-		int i, j;
-		std::tie(i, j) = CalculateEnemyMove();
-		if (player_board[i][j] == 'S') {
-			p_board[i][j].color = ofColor::red;
-			player_board[i][j] = 'H';
+		else {
+			int i, j;
+			std::tie(i, j) = CalculateEnemyMove();
+			player_board[i][j] = p_board[i][j].ChangeColor(player_board[i][j]);
+			player_turn = true;
 		}
-		if (player_board[i][j] == '_') {
-			p_board[i][j].color = ofColor::gray;
-			player_board[i][j] = 'M';
-		}
-		player_turn = true;
+		player_won = CheckIfWon(enemy_board);
+		enemy_won = CheckIfWon(player_board);
 	}
 	
-	/*
-	for (int i = 0; i < kWidth; i++) {
-		for (int j = 0; j < kWidth; j++) {
-			std::cout << enemy_board[i][j] << " ";
-		}
-		std::cout << std::endl;
-	}
-	*/
+	
 }
 
 //--------------------------------------------------------------
@@ -117,6 +112,15 @@ void ofApp::draw(){
 			ofSetColor(e_board[i][j].color);
 			ofDrawRectangle(e_board[i][j].rect);
 		}
+	}
+
+	if (player_won) {
+		ofSetColor(ofColor::red);
+		game_label.drawString("YOU WIN!", 500, 500);
+	}
+	if (enemy_won) {
+		ofSetColor(ofColor::red);
+		game_label.drawString("YOU LOSE!", 500, 500);
 	}
 
 }
