@@ -25,7 +25,14 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-		vector<vector<gamesquare> > board;
+		vector<vector<gamesquare> > p_board;
+		vector<vector<gamesquare> > e_board;
+		vector<vector<char>> player_board;
 		vector<vector<char>> enemy_board;
+		bool player_turn;
+
+		ofImage title_img;
+		ofTrueTypeFont  player_label;
+		ofTrueTypeFont  enemy_label;
 
 };

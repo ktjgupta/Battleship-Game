@@ -2,29 +2,33 @@
 #include <map>
 #include <iostream>
 #include <vector>
+#include <chrono>
+#include <thread>
 #include "game-engine.h"
 
 using std::vector;
 using std::map;
+using namespace std::this_thread;
+using namespace std::chrono;
 
 const int kWidth = 10;
 const char kBlankChar = '_';
-vector<vector<char> > enemy_board(kWidth, vector<char>(kWidth, kBlankChar));
+vector<vector<char> > guess_board(kWidth, vector<char>(kWidth, kBlankChar));
 map<char, int> ships = { {'a', 5}, {'b', 4}, {'c', 3}, {'s', 3}, {'d', 2} };
 
 vector <vector<char>> GenerateRandomBoard() {
 
-
+	vector<vector<char> > board(kWidth, vector<char>(kWidth, kBlankChar));
 	for (std::map<char, int>::iterator it = ships.begin(); it != ships.end(); ++it) {
 		int vert_or_hor = rand() % 2;
 		if (vert_or_hor == 0) {
-			enemy_board = PlayHorizontally(it->second, enemy_board);
+			board = PlayHorizontally(it->second, board);
 		}
 		else {
-			enemy_board = PlayVertically(it->second, enemy_board);
+			board = PlayVertically(it->second, board);
 		}
 	}
-	return enemy_board;
+	return board;
 
 }
 
@@ -90,12 +94,27 @@ vector <vector<char>> PlayVertically(int size, vector <vector<char>> board) {
 	return board;
 }
 
-vector <vector<char>> getEnemyBoard() {
-	return enemy_board;
+vector <vector<char>> getNewBoard() {
+	vector <vector<char>> board = GenerateRandomBoard();
+	return board;
 }
-
 
 void RunGame() {
 	vector <vector<char>> enemy_board = GenerateRandomBoard();
 
+}
+
+std::tuple<int, int> CalculateEnemyMove() {
+	sleep_for(seconds(1));
+	int x, y;
+	while (true) {
+		x = rand() % kWidth;
+		y = rand() % kWidth;
+		if (guess_board[x][y] == kBlankChar) {
+			break;
+		}
+	}
+	guess_board[x][y] = 'g';
+	return { x,y };
+	
 }

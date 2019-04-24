@@ -4,6 +4,7 @@
 #include <map>
 #include <iostream>
 #include "game-engine.h"
+#include "ofAppGLFWWindow.h"
 
 
 //========================================================================
@@ -13,10 +14,8 @@ int main( ){
 
 
 	srand(time(NULL));
-	
-	enemyboard = GenerateRandomBoard();
-
-	ofSetupOpenGL(1024,768,OF_WINDOW);			// <-------- setup the GL context
+	ofSetupOpenGL(5024,1100,OF_WINDOW);			// <-------- setup the GL context
+	ofSetWindowTitle("Battleship - The Game");
 
 	// this kicks off the running of my app
 	// can be OF_WINDOW or OF_FULLSCREEN
