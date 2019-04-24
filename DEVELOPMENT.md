@@ -26,3 +26,20 @@
 		* If there is a ship, button should turn red when clicked
 		* If there isnt, button should turn gray
 
+## Week 3 Code Review
+
+* Openframeworks development
+	* Added the players board
+		* Made sure that the enemy's move was registered
+	* Made Gui look better
+		* Made board proportional to screen
+		* Tried to Make window automatically open in full screen
+			* Didn't work, just made window bigger
+		* Added BattleShip Title
+
+* BackEnd Development
+	* Made enemy choose a random tile on player board for its move
+	* Made sure that the player moves, followed by enemy forever
+	* Made enemy lag so that it looked a little more real
+	* Made a funciton to check if a board had won
+	* Implemented function and stopped game once someone wins
