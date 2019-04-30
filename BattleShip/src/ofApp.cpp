@@ -8,8 +8,6 @@ using namespace std::this_thread;
 using namespace std::chrono;
 
 //--------------------------------------------------------------
-//const int kTileWidth = 72;
-//const int kTileSep = 5;
 const int kTitleWidth = 850;
 const int kTitleHeight = 200;
 const int kBoardY = 210;
@@ -22,7 +20,11 @@ void ofApp::setup(){
 	player_label.load("verdana.ttf", 30);
 	enemy_label.load("verdana.ttf", 30);
 	game_label.load("verdana.ttf", 100);
-	
+	hit_sound.load("sounds/explosion.mp3");
+	back_sound.load("sounds/BGM.mp3");
+	back_sound.setLoop(true);
+	back_sound.setVolume(0.3);
+	back_sound.play();
 	enemy_board = getNewBoard();
 	vector<vector<char> > board(kWidth, vector<char>(kWidth, '_'));
 	player_board = board;
@@ -42,23 +44,18 @@ void ofApp::setup(){
 	game_start = true;
 	
 	destroyer.size = 2;
-	destroyer.visible = true;
 	destroyer.rect.set(1200, 210, 100, 100);
 	
 	submarine.size = 3;
-	submarine.visible = true;
 	submarine.rect.set(1200, 320, 100, 100);
 
 	cruiser.size = 3;
-	cruiser.visible = true;
 	cruiser.rect.set(1200, 430, 100, 100);
 
 	battleship.size = 4;
-	battleship.visible = true;
 	battleship.rect.set(1200, 540, 100, 100);
 
 	carrier.size = 5;
-	carrier.visible = true;
 	carrier.rect.set(1200, 650, 100, 100);
 
 	ships.push_back(destroyer);
@@ -207,6 +204,9 @@ void ofApp::update(){
 						if (ofGetMousePressed() && e_board.display_board[i][j].rect.inside(ofGetMouseX(), ofGetMouseY())) {
 							char init_val = enemy_board[i][j];
 							char new_val = e_board.display_board[i][j].ChangeColor(init_val);
+							if (new_val == 'H') {
+								hit_sound.play();
+							}
 							enemy_board[i][j] = new_val;
 							if (new_val != init_val) {
 								player_turn = false;
@@ -219,6 +219,9 @@ void ofApp::update(){
 				int i, j;
 				std::tie(i, j) = CalculateEnemyMove();
 				player_board[i][j] = p_board.display_board[i][j].ChangeColor(player_board[i][j]);
+				if (player_board[i][j] == 'H') {
+					hit_sound.play();
+				}
 				player_turn = true;
 			}
 			player_won = CheckIfWon(enemy_board);
@@ -247,12 +250,12 @@ void ofApp::draw(){
 	}
 	
 	if (player_won) {
-		ofSetColor(ofColor::red);
-		game_label.drawString("YOU WIN!", 500, 500);
+		ofSetColor(ofColor::black);
+		game_label.drawString("YOU WIN!", 600, 600);
 	}
 	if (enemy_won) {
-		ofSetColor(ofColor::red);
-		game_label.drawString("YOU LOSE!", 500, 500);
+		ofSetColor(ofColor::black);
+		game_label.drawString("YOU LOSE!", 600, 600);
 	}
 
 }
