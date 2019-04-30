@@ -3,9 +3,9 @@
 #include "ofMain.h"
 #include "ofxGui.h"
 #include "ofxMSAInteractiveObject.h"
-#include "gamesquare.h"
+#include "GameBoard.h"
+#include "Ship.h"
 
-const int kWidth = 10;
 class ofApp : public ofBaseApp{
 
 	public:
@@ -24,9 +24,10 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+		
+		GameBoard p_board;
+		GameBoard e_board;
 
-		vector<vector<gamesquare> > p_board;
-		vector<vector<gamesquare> > e_board;
 		vector<vector<char>> player_board;
 		vector<vector<char>> enemy_board;
 		bool player_turn;
@@ -38,6 +39,22 @@ class ofApp : public ofBaseApp{
 
 		bool player_won;
 		bool enemy_won;
-		
+		bool game_start;
+		vector<Ship> ships;
+
+		Ship destroyer;
+		Ship submarine;
+		Ship cruiser;
+		Ship battleship;
+		Ship carrier;
+		Ship ship_ptr;
+		vector<Ship>::iterator it;
+
+		bool ship_clicked;
+		bool init_set;
+		bool ready;
+		int init_x, init_y, fin_x, fin_y, init_i, init_j;
+
+		int size;
 
 };

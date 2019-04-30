@@ -43,6 +43,9 @@
     <ClCompile Include="src\game-engine.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\GameBoard.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -101,13 +104,19 @@
     <ClInclude Include="..\..\..\openframeworks\of_v0.10.1_vs2017_release\addons\ofxGui\src\ofxToggle.h">
       <Filter>addons\ofxGui\src</Filter>
     </ClInclude>
-    <ClInclude Include="src\gamesquare.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\openframeworks\of_v0.10.1_vs2017_release\addons\ofxMSAInteractiveObject-master\src\ofxMSAInteractiveObject.h">
       <Filter>addons\ofxMSAInteractiveObject-master\src</Filter>
     </ClInclude>
     <ClInclude Include="src\game-engine.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameSquare.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameBoard.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Ship.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

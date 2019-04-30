@@ -1,8 +1,7 @@
 #pragma once
 #include "ofMain.h"
-#include "ofApp.h"
 
-class gamesquare {
+class GameSquare {
 	
 	
 public:

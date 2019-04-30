@@ -129,3 +129,50 @@ bool CheckIfWon(vector <vector<char>> board) {
 	}
 	return true;
 }
+
+char ValidatePlacement(int size, int init_x, int init_y, int fin_x, int fin_y, vector<vector<char>> player_board) {
+	if ((init_x != fin_x) && (init_y != fin_y)) {
+		std::cout << "duh" << std::endl;
+		return kBlankChar;
+	}
+	else if (init_x == fin_x) {
+		if (abs(init_y - fin_y) != size - 1) {
+			std::cout << "n;ah" << std::endl;
+			return kBlankChar;
+		}
+		for (int y = init_y; y <= fin_y; y++) {
+			if (player_board[init_x][y] == 'S') {
+				return kBlankChar;
+			}
+		}
+		return 'H';
+	}
+	else {
+		if (abs(init_x - fin_x) != size - 1) {
+			std::cout << "blah" << std::endl;
+			return kBlankChar;
+		}
+		for (int x = init_x; x <= fin_x; x++) {
+			if (player_board[x][init_y] == 'S') {
+				return kBlankChar;
+			}
+		}
+		return 'V';
+	}
+
+	
+}
+
+vector <vector<char>> PlaceShip(vector <vector<char>> player_board, char orient, int init_x, int init_y, int size) {
+	if (orient == 'H') {
+		for (int y = 0; y < size; y++) {
+			player_board[init_x][init_y + y] = 'S';
+		}
+	}
+	else {
+		for (int x = 0; x < size; x++) {
+			player_board[init_x + x][init_y] = 'S';
+		}
+	}
+	return player_board;
+}

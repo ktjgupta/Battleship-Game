@@ -188,6 +188,7 @@ C:\Users\ktjgu\source\openframeworks\of_v0.10.1_vs2017_release\addons\ofxMSAInte
     <ClCompile Include="..\..\..\openframeworks\of_v0.10.1_vs2017_release\addons\ofxGui\src\ofxToggle.cpp" />
     <ClCompile Include="..\..\..\openframeworks\of_v0.10.1_vs2017_release\addons\ofxMSAInteractiveObject-master\src\ofxMSAInteractiveObject.cpp" />
     <ClCompile Include="src\game-engine.cpp" />
+    <ClCompile Include="src\GameBoard.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
   </ItemGroup>
@@ -205,8 +206,10 @@ C:\Users\ktjgu\source\openframeworks\of_v0.10.1_vs2017_release\addons\ofxMSAInte
     <ClInclude Include="..\..\..\openframeworks\of_v0.10.1_vs2017_release\addons\ofxGui\src\ofxToggle.h" />
     <ClInclude Include="..\..\..\openframeworks\of_v0.10.1_vs2017_release\addons\ofxMSAInteractiveObject-master\src\ofxMSAInteractiveObject.h" />
     <ClInclude Include="src\game-engine.h" />
-    <ClInclude Include="src\gamesquare.h" />
+    <ClInclude Include="src\GameBoard.h" />
+    <ClInclude Include="src\GameSquare.h" />
     <ClInclude Include="src\ofApp.h" />
+    <ClInclude Include="src\Ship.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
