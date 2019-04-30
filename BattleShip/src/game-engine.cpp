@@ -1,10 +1,9 @@
 #include <stdlib.h> 
 #include <map>
-#include <iostream>
-#include <vector>
 #include <chrono>
 #include <thread>
 #include "game-engine.h"
+#include "ofMain.h"
 
 using std::vector;
 using std::map;
@@ -99,11 +98,6 @@ vector <vector<char>> getNewBoard() {
 	return board;
 }
 
-void RunGame() {
-	vector <vector<char>> enemy_board = GenerateRandomBoard();
-
-}
-
 std::tuple<int, int> CalculateEnemyMove() {
 	sleep_for(seconds(1));
 	int x, y;
@@ -132,12 +126,10 @@ bool CheckIfWon(vector <vector<char>> board) {
 
 char ValidatePlacement(int size, int init_x, int init_y, int fin_x, int fin_y, vector<vector<char>> player_board) {
 	if ((init_x != fin_x) && (init_y != fin_y)) {
-		std::cout << "duh" << std::endl;
 		return kBlankChar;
 	}
 	else if (init_x == fin_x) {
 		if (abs(init_y - fin_y) != size - 1) {
-			std::cout << "n;ah" << std::endl;
 			return kBlankChar;
 		}
 		for (int y = init_y; y <= fin_y; y++) {
@@ -149,7 +141,6 @@ char ValidatePlacement(int size, int init_x, int init_y, int fin_x, int fin_y, v
 	}
 	else {
 		if (abs(init_x - fin_x) != size - 1) {
-			std::cout << "blah" << std::endl;
 			return kBlankChar;
 		}
 		for (int x = init_x; x <= fin_x; x++) {
@@ -163,16 +154,32 @@ char ValidatePlacement(int size, int init_x, int init_y, int fin_x, int fin_y, v
 	
 }
 
-vector <vector<char>> PlaceShip(vector <vector<char>> player_board, char orient, int init_x, int init_y, int size) {
+vector <vector<char>> PlaceShip(vector <vector<char>> player_board, char orient, int init_x, int init_y, int size, GameBoard &p_board) {
+		
 	if (orient == 'H') {
 		for (int y = 0; y < size; y++) {
 			player_board[init_x][init_y + y] = 'S';
+			p_board.display_board[init_x][init_y + y].color = ofColor::green;
 		}
 	}
 	else {
 		for (int x = 0; x < size; x++) {
 			player_board[init_x + x][init_y] = 'S';
+			p_board.display_board[init_x + x][init_y].color = ofColor::green;
 		}
 	}
 	return player_board;
+}
+
+void SwapCoords(int &init_x, int &init_y, int &fin_x, int &fin_y) {
+	if (fin_x < init_x) {
+		int temp = fin_x;
+		fin_x = init_x;
+		init_x = temp;
+	}
+	if (fin_y < init_y) {
+		int temp = fin_y;
+		fin_y = init_y;
+		init_y = temp;
+	}
 }

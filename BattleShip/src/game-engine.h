@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include "GameBoard.h"
 using std::vector;
 
 vector <vector<char>> GenerateRandomBoard();
@@ -9,4 +10,7 @@ std::tuple<int, int> CalculateEnemyMove();
 vector <vector<char>> getNewBoard();
 bool CheckIfWon(vector <vector<char>> board);
 char ValidatePlacement(int size, int init_x, int init_y, int fin_x, int fin_y, vector<vector<char>> player_board);
-vector <vector<char>> PlaceShip(vector <vector<char>> player_board, char orient, int init_x, int init_y, int size);
+
+vector <vector<char>> PlaceShip(vector <vector<char>> player_board, char orient, int init_x, int init_y, int size, GameBoard &p_board);
+
+void SwapCoords(int &init_x, int &init_y, int &fin_x, int &fin_y);

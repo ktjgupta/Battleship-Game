@@ -24,6 +24,11 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+		void PlayerMove();
+		void ShipPlacement();
+		void PickCoordinates();
+		void ClickShip();
+		void EnemyMove();
 		
 		ofSoundPlayer hit_sound;
 		ofSoundPlayer back_sound;
@@ -42,9 +47,16 @@ class ofApp : public ofBaseApp{
 
 		string size_text;
 
+		enum GameState {
+			PLAY,
+			SHIP_UNCLICKED,
+			PLACE_SHIP,
+			PICK_COORD
+		};
+
+
 		bool player_won;
 		bool enemy_won;
-		bool game_start;
 		vector<Ship> ships;
 
 		Ship destroyer;
@@ -52,14 +64,11 @@ class ofApp : public ofBaseApp{
 		Ship cruiser;
 		Ship battleship;
 		Ship carrier;
-		Ship ship_ptr;
-		vector<Ship>::iterator it;
 
-		bool ship_clicked;
 		bool init_set;
-		bool ready;
-		int init_x, init_y, fin_x, fin_y, init_i, init_j;
-
+		int init_x, init_y, fin_x, fin_y;
+		int ship_index;
 		int size;
+		GameState current_state;
 
 };
