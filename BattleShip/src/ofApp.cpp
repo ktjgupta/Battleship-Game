@@ -20,6 +20,7 @@ void ofApp::setup(){
 	player_label.load("verdana.ttf", 30);
 	enemy_label.load("verdana.ttf", 30);
 	game_label.load("verdana.ttf", 100);
+	size_label.load("verdana.ttf", 50);
 	hit_sound.load("sounds/explosion.mp3");
 	back_sound.load("sounds/BGM.mp3");
 	back_sound.setLoop(true);
@@ -44,19 +45,19 @@ void ofApp::setup(){
 	game_start = true;
 	
 	destroyer.size = 2;
-	destroyer.rect.set(1200, 210, 100, 100);
+	destroyer.rect.set(900, 210, 100, 120);
 	
 	submarine.size = 3;
-	submarine.rect.set(1200, 320, 100, 100);
+	submarine.rect.set(900, 340, 100, 160);
 
 	cruiser.size = 3;
-	cruiser.rect.set(1200, 430, 100, 100);
+	cruiser.rect.set(900, 510, 100, 160);
 
 	battleship.size = 4;
-	battleship.rect.set(1200, 540, 100, 100);
+	battleship.rect.set(1010, 210, 100, 200);
 
 	carrier.size = 5;
-	carrier.rect.set(1200, 650, 100, 100);
+	carrier.rect.set(1010, 420, 100, 250);
 
 	ships.push_back(destroyer);
 	ships.push_back(submarine);
@@ -70,6 +71,7 @@ void ofApp::setup(){
 		y += 20;
 	}
 	*/
+	size_text = "";
 	ship_clicked = false;
 	ready = false;
 	init_set = false;
@@ -85,7 +87,6 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
 	if (game_start) {
-		
 		if (!ship_clicked) {
 			size = 0;
 			it = ships.begin();
@@ -93,7 +94,7 @@ void ofApp::update(){
 				if (ofGetMousePressed() && ship.rect.inside(ofGetMouseX(), ofGetMouseY())) {
 					size = ship.size;
 					ship_clicked = true;
-					cout << "Ship Size: " << size << endl;
+					size_text = "Ship Size: " + to_string(size);
 					ship_ptr = ship;
 					break;
 				}
@@ -141,6 +142,7 @@ void ofApp::update(){
 					}
 					ship_clicked = false;
 					ships.erase(it);
+					size_text = "";
 				}
 				if (ships.size() == 0) {
 					game_start = false;
@@ -243,6 +245,8 @@ void ofApp::draw(){
 			ofSetColor(ofColor::orange);
 			ofDrawRectangle(ship.rect);
 		}
+		ofSetColor(ofColor::black);
+		size_label.drawString(size_text, 800, 800);
 	} else {
 		ofSetColor(ofColor::white);
 		enemy_label.drawString("Enemy Board", 1640, 200);

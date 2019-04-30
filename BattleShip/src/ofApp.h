@@ -38,6 +38,9 @@ class ofApp : public ofBaseApp{
 		ofTrueTypeFont  player_label;
 		ofTrueTypeFont  enemy_label;
 		ofTrueTypeFont  game_label;
+		ofTrueTypeFont  size_label;
+
+		string size_text;
 
 		bool player_won;
 		bool enemy_won;
