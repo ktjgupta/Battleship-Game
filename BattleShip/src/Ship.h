@@ -1,6 +1,5 @@
 #pragma once
-class Ship {
-public:
+struct Ship {
 	int size;
 	ofRectangle rect;
 };

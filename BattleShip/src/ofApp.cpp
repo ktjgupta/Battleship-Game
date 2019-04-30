@@ -118,6 +118,8 @@ void ofApp::draw(){
 	}
 
 }
+
+/*Method that allows the player to make their move*/
 void ofApp::PlayerMove() {
 	for (int i = 0; i < kWidth; i++) {
 		for (int j = 0; j < kWidth; j++) {
@@ -133,6 +135,7 @@ void ofApp::PlayerMove() {
 	}
 }
 
+/*Method that allows the enemy to make theie move*/
 void ofApp::EnemyMove() {
 	int i, j;
 	std::tie(i, j) = CalculateEnemyMove();
@@ -140,6 +143,7 @@ void ofApp::EnemyMove() {
 	player_turn = true;
 }
 
+/*Method that validates and places each ship*/
 void ofApp::ShipPlacement() {
 	int og_x = init_x;
 	int og_y = init_y;
@@ -161,6 +165,7 @@ void ofApp::ShipPlacement() {
 	sleep_for(milliseconds(500));
 }
 
+/*Method that picks coordinates to place ships*/
 void ofApp::PickCoordinates() {
 	for (int i = 0; i < kWidth; i++) {
 		for (int j = 0; j < kWidth; j++) {
@@ -183,6 +188,7 @@ void ofApp::PickCoordinates() {
 	}
 }
 
+/*Method that allows the player to click a ship*/
 void ofApp::ClickShip() {
 	size = 0;
 	for (int i = 0; i < ships.size(); i++) {

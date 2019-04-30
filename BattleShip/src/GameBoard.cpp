@@ -2,6 +2,8 @@
 const int kTileWidth = 72;
 const int kTileSep = 5;
 const int kWidth = 10;
+
+/* Method that creates a game board*/
 void GameBoard::MakeBoard(int set_x, int set_y) {
 	GameSquare myRect;
 	vector<vector<GameSquare> > board(kWidth, vector<GameSquare>(kWidth, myRect));
@@ -21,6 +23,7 @@ void GameBoard::MakeBoard(int set_x, int set_y) {
 	}
 }
 
+/*Method that allows drawing of board*/
 void GameBoard::draw() {
 	for (int i = 0; i < kWidth; i++) {
 		for (int j = 0; j < kWidth; j++) {

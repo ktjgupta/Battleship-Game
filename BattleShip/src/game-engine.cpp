@@ -15,8 +15,8 @@ const char kBlankChar = '_';
 vector<vector<char> > guess_board(kWidth, vector<char>(kWidth, kBlankChar));
 map<char, int> ships = { {'a', 5}, {'b', 4}, {'c', 3}, {'s', 3}, {'d', 2} };
 
+/* Method that generates a random board with given ship sizes */
 vector <vector<char>> GenerateRandomBoard() {
-
 	vector<vector<char> > board(kWidth, vector<char>(kWidth, kBlankChar));
 	for (std::map<char, int>::iterator it = ships.begin(); it != ships.end(); ++it) {
 		int vert_or_hor = rand() % 2;
@@ -31,6 +31,7 @@ vector <vector<char>> GenerateRandomBoard() {
 
 }
 
+/* Sub method of GenerateBoard. Places one ship horizontally randomly */
 vector <vector<char>> PlayHorizontally(int size, vector <vector<char>> board) {
 	int row;
 	vector<int> valid_positions;
@@ -62,6 +63,7 @@ vector <vector<char>> PlayHorizontally(int size, vector <vector<char>> board) {
 	return board;
 }
 
+/* Sub method of GenerateBoard. Places one ship vertically randomly */
 vector <vector<char>> PlayVertically(int size, vector <vector<char>> board) {
 	vector<int> valid_positions;
 	int col;
@@ -93,11 +95,13 @@ vector <vector<char>> PlayVertically(int size, vector <vector<char>> board) {
 	return board;
 }
 
+/* Sub method of GenerateBoard. Places one ship horizontally randomly */
 vector <vector<char>> getNewBoard() {
 	vector <vector<char>> board = GenerateRandomBoard();
 	return board;
 }
 
+/* Method that guesses a random number that coincides as enemy move*/
 std::tuple<int, int> CalculateEnemyMove() {
 	sleep_for(seconds(1));
 	int x, y;
@@ -113,6 +117,7 @@ std::tuple<int, int> CalculateEnemyMove() {
 	
 }
 
+/*Method that checks to see if there are any more ships on board*/
 bool CheckIfWon(vector <vector<char>> board) {
 	for (int i = 0; i < kWidth; i++) {
 		for (int j = 0; j < kWidth; j++) {
@@ -124,7 +129,10 @@ bool CheckIfWon(vector <vector<char>> board) {
 	return true;
 }
 
-char ValidatePlacement(int size, int init_x, int init_y, int fin_x, int fin_y, vector<vector<char>> player_board) {
+/*Method that checks to see if the coordinates picked by user is a valid location for ship*/
+char ValidatePlacement(int size, int init_x, int init_y, int fin_x, 
+	int fin_y, vector<vector<char>> player_board) {
+
 	if ((init_x != fin_x) && (init_y != fin_y)) {
 		return kBlankChar;
 	}
@@ -154,7 +162,9 @@ char ValidatePlacement(int size, int init_x, int init_y, int fin_x, int fin_y, v
 	
 }
 
-vector <vector<char>> PlaceShip(vector <vector<char>> player_board, char orient, int init_x, int init_y, int size, GameBoard &p_board) {
+/*Given the ship is valid, places ship on board and returns the board*/
+vector <vector<char>> PlaceShip(vector <vector<char>> player_board, char orient, 
+	int init_x, int init_y, int size, GameBoard &p_board) {
 		
 	if (orient == 'H') {
 		for (int y = 0; y < size; y++) {
@@ -171,6 +181,7 @@ vector <vector<char>> PlaceShip(vector <vector<char>> player_board, char orient,
 	return player_board;
 }
 
+/* Method that swaps the 2 coordinates if final is less than initial*/
 void SwapCoords(int &init_x, int &init_y, int &fin_x, int &fin_y) {
 	if (fin_x < init_x) {
 		int temp = fin_x;

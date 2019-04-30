@@ -189,6 +189,7 @@ C:\Users\ktjgu\source\openframeworks\of_v0.10.1_vs2017_release\addons\ofxMSAInte
     <ClCompile Include="..\..\..\openframeworks\of_v0.10.1_vs2017_release\addons\ofxMSAInteractiveObject-master\src\ofxMSAInteractiveObject.cpp" />
     <ClCompile Include="src\game-engine.cpp" />
     <ClCompile Include="src\GameBoard.cpp" />
+    <ClCompile Include="src\GameSquare.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
   </ItemGroup>
