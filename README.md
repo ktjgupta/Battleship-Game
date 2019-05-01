@@ -12,13 +12,11 @@ instead of playing with two people, one person plays against the computer.
 Copy folder into your directory and then compile main.cpp.
 
 ## Built With
-
 	* C++ - codeing language used for game functions
 	* OpenFrameworks - language used for front end and display
 		* Sound library - Used for various sounds played
 
 ## Features 
-
 	* Allows user to chose ship placement
 	* Allows user to click where the enemy ships might be
 	* Enemy chooses at random where user ships are
@@ -26,6 +24,5 @@ Copy folder into your directory and then compile main.cpp.
 	* Plays bacground music and explosion sound effect when ship is hit
 
 ## Future Work
-
 	* Make smarter AI
 	* Improve GUI
