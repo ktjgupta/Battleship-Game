@@ -49,6 +49,12 @@
     <ClCompile Include="src\GameSquare.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\game-engine-test.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameSquare-test.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -68,6 +74,9 @@
     </Filter>
     <Filter Include="addons\ofxMSAInteractiveObject-master\src">
       <UniqueIdentifier>{616d43b3-0124-4c4d-ae4d-11ea12215ca3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests">
+      <UniqueIdentifier>{486c47d2-d55b-4235-b494-2c6fb2e886bb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="src\Ship.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\catch.hpp">
+      <Filter>tests</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

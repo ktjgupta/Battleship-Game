@@ -9,7 +9,7 @@
 
 //========================================================================
 vector <vector<char>> enemyboard;
-
+/*
 int main( ){
 
 
@@ -23,5 +23,6 @@ int main( ){
 	ofRunApp(new ofApp());
 
 }
+*/
 
 
