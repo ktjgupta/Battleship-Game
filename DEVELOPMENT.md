@@ -43,3 +43,34 @@
 	* Made enemy lag so that it looked a little more real
 	* Made a funciton to check if a board had won
 	* Implemented function and stopped game once someone wins
+
+## Week 4
+
+* Openframeworks development
+	* Edited the draw function so it only shows the enemy board when user is done picking ships
+	* Created orange rectangles that imitate the 5 classic ships of battle ship
+	* Added a label to indicate size of ship when user clicks the ship
+	* Tried to make ships draggable
+		* Tried using drag events
+		* Couldn't figure out how t ocorrelate draggable object with coordinates on board
+		* Wasn't able to turn the ships like I wanted to
+	* Decided that user can click two coordinates and indicate that's where the ship should be.
+	* Steps:
+		* User clicks ship and size is shown
+		* User clicks first cooridnate where ship should go
+			* Made this purple to indicate where the user clicked the first coordinate
+		* User clicks again for final coordinate
+		* If ship placement is validated, then ship is placed
+			* Made ship turn gree nto indicate where ship is
+		* Ship disappears once ship placed
+		* When all ships are gone, regular game play continues
+	* Centered the You Win and You Lose label
+	* Added reset button
+
+* Back-end Development
+	* Made a validate method for ship placement
+		* Uses the ships cooridnates
+			* Checks to make sure correct ship size
+			* Checks to make sure that it is either horizontal or vertical
+			* Checks to make sure ship placement doesn't overlap any ships
+	* Made a place ship method that places the ship in the right place once validated
