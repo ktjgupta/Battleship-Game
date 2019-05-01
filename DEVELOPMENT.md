@@ -73,4 +73,4 @@
 			* Checks to make sure correct ship size
 			* Checks to make sure that it is either horizontal or vertical
 			* Checks to make sure ship placement doesn't overlap any ships
-	* Made a place ship method that places the ship in the right place once validated
+	* Made a place ship method that places the ship in the right place once validated	
