@@ -46,7 +46,7 @@ void ofApp::setup(){
 	battleship.rect.set(1010, 210, 100, 200);
 	carrier.size = 5;
 	carrier.rect.set(1010, 420, 100, 250);
-
+	ships.clear();
 	ships.push_back(destroyer);
 	ships.push_back(submarine);
 	ships.push_back(cruiser);
@@ -123,7 +123,8 @@ void ofApp::draw(){
 void ofApp::PlayerMove() {
 	for (int i = 0; i < kWidth; i++) {
 		for (int j = 0; j < kWidth; j++) {
-			if (ofGetMousePressed() && e_board.display_board[i][j].rect.inside(ofGetMouseX(), ofGetMouseY())) {
+			if (ofGetMousePressed() && e_board.display_board[i][j].rect.inside(ofGetMouseX(), 
+				ofGetMouseY())) {
 				char init_val = enemy_board[i][j];
 				char new_val = e_board.display_board[i][j].ChangeColor(init_val, hit_sound);
 				enemy_board[i][j] = new_val;
@@ -135,7 +136,7 @@ void ofApp::PlayerMove() {
 	}
 }
 
-/*Method that allows the enemy to make theie move*/
+/*Method that allows the enemy to make their move*/
 void ofApp::EnemyMove() {
 	int i, j;
 	std::tie(i, j) = CalculateEnemyMove();
