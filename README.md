@@ -13,7 +13,7 @@ Copy folder into your directory and then compile main.cpp.
 
 ## Built With
 
-* C++ - codeing language used for game functions
+* C++ - coding language used for game functions
 * OpenFrameworks - language used for front end and display
 	* Sound library - Used for various sounds played
 
