@@ -23,7 +23,7 @@ Copy folder into your directory and then compile main.cpp.
 * Allows user to click where the enemy ships might be
 * Enemy chooses at random where user ships are
 * If user wins, displays "You Win," else "You Lose"
-* Plays bacground music and explosion sound effect when ship is hit
+* Plays background music and explosion sound effect when ship is hit
 
 ## Future Work
 
